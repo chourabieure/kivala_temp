@@ -17,6 +17,7 @@ export const Icon: FC<IconProps> = memo(
     if (!(name in icons)) return <></>
 
     const iconColor: string = (color && tailwindConfig.default.theme?.extend.colors[color]) ?? color
+    // @ts-ignore
     const LucideIcon = icons[name]
 
     return (
