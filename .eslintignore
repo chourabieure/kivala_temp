@@ -1,0 +1,5 @@
+src/api/generated.tsx
+.github/
+.eslintrc.json
+.next/
+next.config.mjs

@@ -1,0 +1,6 @@
+# Generated Apps
+/node_modules/
+/config/
+.next/
+README.md
+.github/
