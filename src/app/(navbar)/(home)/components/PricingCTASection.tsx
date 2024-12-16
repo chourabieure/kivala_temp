@@ -13,28 +13,63 @@ const values = [
   'Maintenance complète',
   'Support premium',
 ]
+interface Props {
+  variant?: 'default' | 'CTA'
+}
 
-export const PricingCTASection = () => {
+const variantObject = {
+  title: {
+    default: (
+      <>
+        Et vous ?<br /> Quand est-ce que vous installez Kivala chez vous ?
+      </>
+    ),
+    CTA: 'Convaincu par notre solution ?',
+  },
+  subTitle: {
+    default: '',
+    CTA: 'Choisissez votre matériel et accédez à votre platine, vos applications et votre dashboard.',
+  },
+  values: {
+    default: [
+      'Installation de notre matériel',
+      "Accès complet à l'application",
+      'Dashboard administrateur',
+      'Maintenance complète',
+      'Support premium',
+    ],
+    CTA: [
+      'Dashboard administrateur',
+      'Installation de notre matériel',
+      'Maintenance complète, et bien plus ...',
+    ],
+  },
+}
+
+export const PricingCTASection = ({ variant = 'default' }: Props) => {
   return (
     <SectionWrapper className={'bg-background-kivala-tertiary'}>
-      <SectionTitle
-        className={'md:hidden'}
-        title="Vous êtes prêt à installer Kivala® ?"
-        subtitle="Découvrez nos offres"
-      />
-      <section className="flex w-full max-md:flex-col gap-8 md:gap-16 items-center max-w-5xl">
+      <section className="flex w-full max-md:flex-col gap-8 md:gap-16 items-center max-w-5xl z-0">
         <motion.div
           initial={{ y: -50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-          className="flex-1 flex flex-col gap-8"
+          className="flex-1 flex flex-col gap-8 md:gap-12 z-[2]"
         >
-          <span className="text-[48px] font-bold max-md:hidden leading-tight">
-            Et vous ?<br /> Quand est-ce que vous installez Kivala chez vous ?
+          <span className="flex flex-col max-md:text-center gap-3">
+            <span className="text-[24px] md:text-[32px] font-bold leading-tight">
+              {variantObject.title[variant]}
+            </span>
+            {variantObject.subTitle[variant] && (
+              <span className="text-xl font-mediuem leading-tight">
+                {variantObject.subTitle[variant]}
+              </span>
+            )}
           </span>
+
           <div className="flex flex-col pl-2 gap-4">
-            {values.map((value, index) => (
+            {variantObject.values[variant].map((value, index) => (
               <span key={index} className="flex items-center gap-4">
                 <Icon
                   name="CircleCheck"
@@ -45,16 +80,27 @@ export const PricingCTASection = () => {
               </span>
             ))}
           </div>
+          {variant === 'CTA' && (
+            <Button
+              variant={'secondary'}
+              size={'lg'}
+              className="md:w-fit bg-background-default hover:bg-background-default/80"
+              animation={'translate'}
+            >
+              Contactez-nous
+              <Icon name="MessagesSquare" />
+            </Button>
+          )}
         </motion.div>
-        <div className="relative flex-1 w-full">
+        <div className="relative">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-            className="flex flex-col bg-background-default rounded-xl p-6 md:p-8 gap-8 z-10"
+            className="relative flex flex-col flex-1 w-full bg-background-default rounded-xl p-6 md:p-8 gap-8 z-10"
           >
-            <span className="md:text-center flex md:items-center flex-col gap-6">
+            <span className="flex flex-col text-center items-center gap-3">
               <span className="relative text-3xl md:text-[30px] font-bold w-fit">
                 Votre devis en 2 clics
               </span>
@@ -68,17 +114,17 @@ export const PricingCTASection = () => {
               </span>
             </span>
 
-            <Button variant={'primary'} size={'lg'} animation={'translate'}>
+            <Button variant={'gradient'} size={'lg'} animation={'translate'}>
               Obtenir mon devis
               <Icon name="ScrollText" />
             </Button>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: '-60%', top: 0, right: -200, rotate: '30deg' }}
+            whileInView={{ opacity: 1, y: '-50%', right: -150 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-            className="absolute top-0 -translate-y-1/2 -right-[150px] rotate-[30deg] h-[300px] w-[300px] -z-[0]"
+            className="absolute h-[300px] w-[300px] -z-[0]"
           >
             <Image className="" alt="Crown form" src="/svg/crown.svg" fill />
           </motion.div>

@@ -1,7 +1,9 @@
+'use client'
 import { SectionTitle } from '@/components/SectionWrapper/components/SectionTitle'
 import { SectionWrapper } from '@/components/SectionWrapper/SectionWrapper'
 import Marquee from '@/components/ui/marquee'
 import { cn } from '@/lib/utils'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -80,14 +82,21 @@ export const BrandCloudSection = () => {
     )
   }
   return (
-    <SectionWrapper className={'px-0'}>
+    <SectionWrapper className={'px-0 !pb-0 '}>
       <SectionTitle title="Ils parlent de nous" subtitle="Un grand merci à eux" />
 
-      <Marquee className="[--duration:40s]">
-        {brands.map((brand) => (
-          <BrandCard key={brand.name} brand={brand} />
-        ))}
-      </Marquee>
+      <motion.div
+        initial={{ y: -25, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
+      >
+        <Marquee className="[--duration:40s]">
+          {brands.map((brand) => (
+            <BrandCard key={brand.name} brand={brand} />
+          ))}
+        </Marquee>
+      </motion.div>
     </SectionWrapper>
   )
 }

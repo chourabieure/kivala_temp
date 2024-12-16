@@ -4,20 +4,22 @@ import { IconType } from '@/components/Icon/Icon.props'
 import { SectionTitle } from '@/components/SectionWrapper/components/SectionTitle'
 import { SectionWrapper } from '@/components/SectionWrapper/SectionWrapper'
 import { Button } from '@/components/ui/button'
+import { ValuesList, ValuesListType } from '@/components/ValuesList/ValuesList'
 import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
+import { ValueSection } from '../../syndic/components/ValueSection'
 
-const values = [
-  { text: 'Sécurité optimale', icon: 'Shield' },
+const values: ValuesListType[] = [
+  { label: 'Sécurité optimale', icon: 'Shield' },
   {
-    text: 'Solution digitale',
+    label: 'Solution digitale',
     icon: 'Computer',
   },
   {
-    text: 'Un SAV Expert',
+    label: 'Un SAV Expert',
     icon: 'Headset',
   },
-] as { text: string; icon: IconType }[]
+]
 
 export const VideoSection = () => {
   return (
@@ -29,7 +31,7 @@ export const VideoSection = () => {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-        className="relative w-full max-w-5xl h-[200px] sm:h-[300px] md:h-[400px] lg:h-[600px] rounded-xl
+        className="relative w-full max-w-5xl h-[200px] sm:h-[275px] md:h-[350px] lg:h-[500px] rounded-xl
           overflow-hidden"
       >
         <iframe
@@ -46,25 +48,12 @@ export const VideoSection = () => {
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
         className="flex flex-col max-w-5xl gap-8"
       >
-        <span className="text-2xl font-medium md:text-center">
+        <span className="text-xl font-medium md:text-center">
           Kivala® apporte une solution clé en main, fonctionnelle et simple d’usage, pour vous
           garantir une parfaite maîtrise des accès dans votre immeuble. Un système de gestion
           d’accès nouvelle génération.
         </span>
-        <div className="flex w-full gap-6 md:gap-12 items-center flex-wrap justify-center">
-          {values.map(({ text, icon }, index) => (
-            <span
-              key={index}
-              className={cn(
-                `flex max-md:flex-1 items-center gap-2 md:gap-3 text-xl font-semibold leading-none whitespace-nowrap
-                max-md:justify-center`,
-              )}
-            >
-              <Icon name={icon} containerClassName={'text-background-kivala-primary'} size={24} />
-              {text}
-            </span>
-          ))}
-        </div>
+        <ValuesList values={values} />
       </motion.div>
       <motion.div
         initial={{ y: -50, opacity: 0 }}
@@ -73,11 +62,16 @@ export const VideoSection = () => {
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
         className="flex w-full justify-center max-md:flex-col gap-4"
       >
-        <Button variant={'primary'} size={'lg'} animation={'translate'}>
+        <Button variant={'gradient'} size={'lg'} animation={'translate'}>
           Contactez-nous
           <Icon name="MessagesSquare" />
         </Button>
-        <Button variant={'gradient'} size={'lg'} animation={'translate'}>
+        <Button
+          variant={'secondary'}
+          size={'lg'}
+          animation={'translate'}
+          className="bg-background-default hover:bg-background-default/80"
+        >
           Consulter la brochure
           <Icon name="MoveRight" />
         </Button>

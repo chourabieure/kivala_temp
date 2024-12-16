@@ -5,11 +5,21 @@ import { SectionWrapper } from '@/components/SectionWrapper/SectionWrapper'
 import { SvgStar } from '@/components/Testimonial/components/SvgStar'
 import { SvgStarHalf } from '@/components/Testimonial/components/SvgStarHalf'
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { ValuesList } from '@/components/ValuesList/ValuesList'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
-const values = ['Sécurité optimale', 'Gain de temps', 'Solution sur-mesure']
+const values = [
+  {
+    label: 'Sécurité optimale',
+  },
+  {
+    label: 'Gain de temps',
+  },
+  {
+    label: 'Solution sur-mesure',
+  },
+]
 
 const peoples = [
   {
@@ -38,26 +48,7 @@ export const AppSection = () => {
           title="Une solution clé en main"
           subtitle="Application mobile pour les résidents"
         />
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-          className="flex w-full gap-6 md:gap-12 items-center flex-wrap justify-center"
-        >
-          {values.map((value, index) => (
-            <span
-              key={index}
-              className={cn(
-                `flex max-md:flex-1 items-center gap-2 md:gap-4 text-xl font-semibold leading-none whitespace-nowrap
-                max-md:justify-center`,
-              )}
-            >
-              <Icon name="Check" containerClassName={'text-text-positive-tertiary'} size={24} />
-              {value}
-            </span>
-          ))}
-        </motion.div>
+        <ValuesList values={values} variant="positive" />
       </div>
 
       <div className="flex max-md:flex-col w-full items-center justify-between max-w-5xl gap-16">
@@ -66,27 +57,39 @@ export const AppSection = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-          className="relative flex-1 flex items-center gap-8 justify-center h-[600px]"
+          className="relative flex-1 flex items-center gap-6 justify-center h-[500px]"
         >
           <div
             className="relative max-sm:bottom-0 max-sm:-left-2 max-sm:rotate-[-10deg] max-sm:z-[2] max-sm:absolute
-              w-[169px] lg:w-[242px] h-[350px] lg:h-[500px] hover:scale-[102%] hover:rotate-[-3deg] transition-all
+              w-[169px] lg:w-[242px] h-[300px] lg:h-[450px] hover:scale-[102%] hover:rotate-[-3deg] transition-all
               duration-300 ease-in-out"
           >
-            <Image src={'/image/iphone-mockup-1.png'} alt="plateforme" fill priority />
+            <Image
+              src={'/image/iphone-mockup-1.png'}
+              alt="plateforme"
+              fill
+              priority
+              className="object-contain"
+            />
           </div>
           <div
-            className="relative max-sm:ml-20 max-sm:rotate-[10deg] w-[219px] lg:w-[292px] h-[450px] lg:h-[600px]
+            className="relative max-sm:ml-20 max-sm:rotate-[10deg] w-[219px] lg:w-[292px] h-[375px] lg:h-[500px]
               hover:scale-[102%] hover:rotate-[3deg] transition-all duration-300 ease-in-out"
           >
-            <Image src={'/image/iphone-mockup-2.png'} alt="plateforme" fill priority />
+            <Image
+              src={'/image/iphone-mockup-2.png'}
+              alt="plateforme"
+              fill
+              priority
+              className="object-contain"
+            />
           </div>
           <motion.div
             initial={{ y: '0%', right: '-24px', rotate: '10deg', opacity: 0 }}
             whileInView={{ y: '-50%', rotate: '0deg', opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-            className="bg-[#F7F9FF] md:h-[400px] lg:h-[500px] md:w-[400px] lg:w-[500px] rounded-[140px] absolute top-1/2
+            className="bg-[#F7F9FF] md:h-[350px] lg:h-[450px] md:w-[350px] lg:w-[450px] rounded-[140px] absolute top-1/2
               -z-10"
           />
           <motion.div
@@ -106,8 +109,8 @@ export const AppSection = () => {
           transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
           className="flex flex-1 flex-col gap-8 md:gap-16"
         >
-          <div className="flex w-full flex-col gap-4">
-            <span className="text-2xl font-medium">
+          <div className="flex w-full flex-col gap-6">
+            <span className="text-xl font-medium">
               Kivala est une application innovante avec des fonctionnalités simples pour
               <span className="text-background-kivala-primary"> optimiser votre sécurité </span>au
               sein de votre immeuble.

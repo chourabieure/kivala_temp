@@ -30,9 +30,9 @@ export const ContactForm = () => {
   })
 
   return (
-    <SectionWrapper ref={ref} className="relative">
+    <SectionWrapper ref={ref} className="pt-[96px] md:pt-[128px] relative">
       <motion.div
-        initial={{ y: -50, opacity: 0 }}
+        initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
@@ -40,10 +40,10 @@ export const ContactForm = () => {
       >
         <h2 className="text-lg font-extrabold text-background-kivala-primary">CONTACT</h2>
         <div className="flex flex-col items-center gap-8 w-full">
-          <h1 className="max-md:text-center text-[48px] md:text-[64px] font-bold leading-none">
+          <h1 className="max-md:text-center text-[34px] md:text-[48px] lg:text-[56px] font-bold leading-none">
             Contactez Kivala
           </h1>
-          <h3 className="text-2xl font-medium leading-snug md:text-center">
+          <h3 className="text-md md:text-xl lg:text-2xl font-medium leading-snug md:text-center">
             Vous avez des questions sur la solution Kivala ? Nous sommes à votre disposition, merci
             de compléter le formulaire ci-dessous pour être recontacté.
           </h3>

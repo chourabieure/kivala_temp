@@ -3,13 +3,14 @@ import { SectionTitle } from '@/components/SectionWrapper/components/SectionTitl
 import { SectionWrapper } from '@/components/SectionWrapper/SectionWrapper'
 import Marquee from '@/components/ui/marquee'
 import { cn } from '@/lib/utils'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 export const PhotosSection = () => {
   const PictureContainer = () => {
     return (
       <figure
-        className={cn('relative rounded-lg bg-background-kivala-tertiary h-[250px] w-[500px]')}
+        className={cn('relative rounded-lg bg-background-kivala-tertiary h-[200px] w-[450px]')}
       >
         <Image src={'/temp'} alt={'Picture'} fill />
       </figure>
@@ -17,9 +18,15 @@ export const PhotosSection = () => {
   }
 
   return (
-    <SectionWrapper>
+    <SectionWrapper className={'!pt-0'}>
       <SectionTitle title="Découvrez nos installations" subtitle="Découvrez nos installations" />
-      <div className="flex flex-col gap-6">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
+        className="flex flex-col gap-6"
+      >
         <Marquee className="[--duration:120s]">
           {Array.from({ length: 4 }).map((_, index) => (
             <PictureContainer key={index} />
@@ -35,7 +42,7 @@ export const PhotosSection = () => {
             <PictureContainer key={index} />
           ))}
         </Marquee>
-      </div>
+      </motion.div>
     </SectionWrapper>
   )
 }

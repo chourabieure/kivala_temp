@@ -28,7 +28,7 @@ const reviews: TestimonialType[] = [
 
 export const Testimonial = () => {
   return (
-    <SectionWrapper className={'bg-background-kivala-tertiary'}>
+    <SectionWrapper className={'bg-background-kivala-tertiary z-[0]'}>
       <SectionTitle
         title={
           <>

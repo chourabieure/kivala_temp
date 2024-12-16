@@ -1,6 +1,6 @@
+'use client'
 import { HeroSection } from './components/HeroSection'
 import { BrandCloudSection } from './components/BrandCloudSection'
-import { CTAHeroSection } from './components/CTAHeroSection'
 import { SectionWrapper } from '@/components/SectionWrapper/SectionWrapper'
 import { PlatineSection } from './components/PlatineSection'
 import { AppSection } from './components/AppSection'
@@ -13,23 +13,43 @@ import { PricingCTASection } from './components/PricingCTASection'
 import { FAQSection } from './components/FAQSection'
 import { Icon } from '@/components/Icon'
 import { PhotosSection } from './components/PhotosSection'
+import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/button'
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <CTAHeroSection />
-      <div className="flex justify-center">
-        <BadgeWinner />
-      </div>
+      <motion.div
+        initial={{ y: -50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
+        className="flex w-full justify-center max-md:flex-col gap-4 px-6"
+      >
+        <Button variant={'secondary'} size={'lg'} animation={'translate'}>
+          Être rappelé
+          <Icon name="PhoneCall" />
+        </Button>
+        <Button variant={'gradient'} size={'lg'} animation={'translate'}>
+          Installer Kivala
+          <Icon name="MoveRight" />
+        </Button>
+      </motion.div>
       <BrandCloudSection />
-      <div className="flex justify-center py-16">
+      <motion.div
+        initial={{ y: -25, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
+        className="flex justify-center py-16"
+      >
         <Icon
           name="ArrowDown"
           size={64}
           containerClassName={'text-background-kivala-primary animate-bounce'}
         />
-      </div>
+      </motion.div>
       <KeyElements />
       <RedirectionCardSection />
       <VideoSection />

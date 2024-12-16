@@ -76,9 +76,9 @@ export const KeyElements = () => {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-        className="flex flex-col justify-center gap-12 z-[10]"
+        className="flex flex-col justify-center gap-12 z-[2]"
       >
-        <span className="text-2xl md:text-center max-w-5xl">
+        <span className="text-xl md:text-center max-w-5xl">
           Kivala se charge de l’installation de la platine digitale et vous accompagne pour sa prise
           en main. <br />
           Avec Kivala,
@@ -92,15 +92,14 @@ export const KeyElements = () => {
         <div className="flex max-md:flex-col gap-6 max-w-5xl">
           {cards.map(({ title, text, img }, index) => (
             <div
-              className="flex flex-1 flex-col relative rounded-xl overflow-hidden min-h-[300px] md:min-h-[500px]
-                bg-background-default"
+              className="flex flex-1 flex-col relative rounded-xl overflow-hidden bg-background-default"
               key={index}
             >
-              <div className="relative h-[300px] w-full">
+              <div className="relative h-[250px] w-full">
                 <Image src={img} alt={'image_' + title} fill className="object-cover" />
               </div>
               <div className="flex flex-col gap-3 p-6">
-                <span className="font-bold text-[22px] leading-tight">{title}</span>
+                <span className="font-bold text-2xl leading-tight">{title}</span>
                 <span className="text-lg">{text}</span>
               </div>
             </div>
@@ -113,13 +112,18 @@ export const KeyElements = () => {
           transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
           className="flex w-full justify-center max-md:flex-col gap-4"
         >
-          <Button variant={'primary'} size={'lg'} animation={'translate'}>
-            Contactez-nous
-            <Icon name="MessagesSquare" />
-          </Button>
           <Button variant={'gradient'} size={'lg'} animation={'translate'}>
             Générer un devis
             <Icon name="FileDown" />
+          </Button>
+          <Button
+            variant={'secondary'}
+            size={'lg'}
+            animation={'translate'}
+            className="bg-background-default hover:bg-background-default/80"
+          >
+            Contactez-nous
+            <Icon name="MessagesSquare" />
           </Button>
         </motion.div>
       </motion.div>

@@ -114,16 +114,16 @@ export const FAQSection = () => {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-        className="flex flex-col bg-background-kivala-tertiary w-full max-w-5xl p-4 md:p-12 gap-4 rounded-xl"
+        className="flex flex-col bg-background-kivala-tertiary w-full max-w-5xl p-4 md:p-8 gap-4 rounded-xl"
       >
         {questions.map(({ question, answer }, index) => (
           <Collapsible
             key={index}
             open={selectedIndex === index}
-            className="bg-background-default rounded-xl py-4 px-6"
+            className="bg-background-default rounded-xl"
           >
             <CollapsibleTrigger
-              className="flex w-full items-center justify-between gap-4"
+              className="flex w-full items-center justify-between gap-4 py-4 px-6"
               onClick={() => {
                 if (selectedIndex === index) {
                   setSelectedIndex(null)
@@ -143,7 +143,7 @@ export const FAQSection = () => {
               />
             </CollapsibleTrigger>
             <CollapsibleContent>
-              <div className="pt-4">
+              <div className="pt-4 px-6 pb-4">
                 <span className="text-base md:text-lg">{answer}</span>
               </div>
             </CollapsibleContent>

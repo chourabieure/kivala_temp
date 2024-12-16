@@ -5,9 +5,10 @@ import { SectionTitle } from '@/components/SectionWrapper/components/SectionTitl
 import { SectionWrapper } from '@/components/SectionWrapper/SectionWrapper'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRef } from 'react'
 
 const cards = [
   {
@@ -25,8 +26,21 @@ const cards = [
 ]
 
 export const RedirectionCardSection = () => {
+  const ref = useRef(null)
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['end end', 'start start'],
+  })
+
+  const value = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  })
+
   return (
-    <SectionWrapper>
+    <SectionWrapper ref={ref}>
       <SectionTitle title="Vous êtes :" subtitle="Par où commencer ?" />
 
       <motion.div
@@ -45,25 +59,26 @@ export const RedirectionCardSection = () => {
             <div
               className={cn(
                 `relative flex-1 flex flex-col pb-8 md:pb-[130px] pt-8 md:pt-12 max-md:gap-8 px-8 rounded-xl
-                text-text-brand-on-brand md:h-[410px] justify-between`,
-                index === 1 ? 'bg-background-kivala' : 'bg-background-kivala-primary',
+                md:h-[410px] justify-between`,
+                index === 1
+                  ? 'text-text-brand-on-brand bg-background-kivala'
+                  : 'bg-background-kivala-tertiary',
               )}
             >
               <div className="flex flex-col gap-6">
-                <span className="font-semibold text-[24px] md:text-[32px] text-center leading-none">
+                <span className="font-bold text-[20px] md:text-[24px] text-center leading-none">
                   {title}
                 </span>
-                <span className="font-semibold text-xl text-center leading-snug">{text}</span>
+                <span className="font-medium text-xl text-center leading-snug">{text}</span>
               </div>
 
               <Button
                 variant={'ghost'}
                 size={'lg'}
                 className={cn(
-                  'text-text-brand-on-brand',
                   index === 1
-                    ? 'hover:bg-background-kivala-primary/20'
-                    : 'hover:bg-background-kivala/20',
+                    ? 'hover:bg-background-kivala-primary/20 text-background-kivala-primary'
+                    : 'hover:bg-background-kivala/10 text-background-kivala-primary',
                 )}
               >
                 En savoir plus
@@ -82,6 +97,22 @@ export const RedirectionCardSection = () => {
           </Link>
         ))}
       </motion.div>
+      <motion.div
+        style={{ y: useTransform(value, [0, 1], [0, 50]) }}
+        initial={{ top: 100, right: 50, rotate: '10deg', opacity: 0 }}
+        whileInView={{ y: 0, rotate: '40deg', opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
+        className="bg-[#F7F9FF] h-[500px] w-[500px] rounded-[140px] absolute -z-10"
+      />
+      <motion.div
+        style={{ y: useTransform(value, [0, 1], [0, 50]) }}
+        initial={{ bottom: 100, left: 50, rotate: '-10deg', opacity: 0 }}
+        whileInView={{ rotate: '-30deg', opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
+        className="bg-[#F7F9FF] h-[400px] w-[400px] rounded-[140px] absolute -z-10"
+      />
     </SectionWrapper>
   )
 }

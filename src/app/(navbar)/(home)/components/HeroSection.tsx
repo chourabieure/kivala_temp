@@ -6,13 +6,10 @@ import WordRotate from '@/components/ui/word-rotate'
 import { cn } from '@/lib/utils'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import Image from 'next/image'
-import { BadgeWinner } from '@/components/BadgeWinner/BadgerWinner'
 
 const words = ['innovante', 'sécurisée', 'efficace']
 
 export const HeroSection = () => {
-  // const isMobile = useIsMobile()
   const ref = useRef(null)
 
   const { scrollYProgress } = useScroll({
@@ -27,7 +24,11 @@ export const HeroSection = () => {
   })
 
   return (
-    <SectionWrapper ref={ref} className={'pt-6 md:pt-12 gap-16 min-h-screen'}>
+    <SectionWrapper
+      id={'top'}
+      ref={ref}
+      className={'pt-[96px] md:pt-[calc(128px_+_50px)] !pb-8 gap-16 min-h-screen'}
+    >
       <motion.div
         initial={{ y: -25, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -36,8 +37,8 @@ export const HeroSection = () => {
         className="flex flex-col items-center justify-center gap-8 w-full max-w-5xl"
       >
         <h1
-          className="flex flex-col items-center text-[34px] md:text-[48px] lg:text-[64px] font-bold text-center
-            text-background-kivala leading-tight"
+          className="flex flex-col items-center text-[34px] md:text-[48px] lg:text-[56px] font-bold text-center
+            text-background-kivala leading-none"
         >
           <span className="flex max-md:flex-col items-center md:gap-4">
             <span>La gestion d’accès</span>
@@ -52,9 +53,6 @@ export const HeroSection = () => {
             <span className="text-background-kivala-primary">code à usage</span> unique pour vos
             différents visiteurs.
           </h2>
-          <h3 className="text-background-kivala-primary">
-            Soyez enfin serein pour vous faire livrer !
-          </h3>
         </motion.div>
       </motion.div>
 
@@ -67,32 +65,38 @@ export const HeroSection = () => {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-        className="relative w-full max-w-5xl h-[600px]"
+        className="relative w-full max-w-7xl h-[600px]"
       >
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
+        <motion.video
+          style={{
+            width: useTransform(value, [0, 1], ['100%', '80%']),
+          }}
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full object-cover rounded-xl"
           playsInline
           autoPlay
           loop
           muted
         >
           <source src="/video/demo.mp4" type="video/mp4" />
-        </video>
+        </motion.video>
         <Testimonial
           style={{
-            y: useTransform(value, [0, 1], [200, 25]),
-            x: useTransform(value, [0, 1], [-50, 0]),
+            y: useTransform(value, [0, 0.8], [200, 25]),
+            x: useTransform(value, [0, 0.8], [-50, 100]),
+            opacity: useTransform(value, [0, 0.8], [0, 1]),
           }}
           className={cn('absolute max-tablet:hidden top-0 -left-[200px] ')}
         />
         <Testimonial
           style={{
-            y: useTransform(value, [0, 1], [-50, -200]),
-            x: useTransform(value, [0, 1], [50, 0]),
+            y: useTransform(value, [0, 0.8], [-50, -200]),
+            x: useTransform(value, [0, 0.8], [50, -100]),
+            opacity: useTransform(value, [0, 0.8], [0, 1]),
           }}
           className={cn('absolute max-tablet:hidden bottom-0 -right-[200px] ')}
         />
       </motion.div>
+
       <motion.div
         style={{ y: useTransform(value, [0, 1], [-100, 0]) }}
         initial={{ top: 200, right: 50, rotate: '10deg', opacity: 0 }}
