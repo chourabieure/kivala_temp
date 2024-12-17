@@ -67,7 +67,7 @@ const sections: { title: string; icon: IconType; text: ReactNode }[] = [
 export const MainSection = () => {
   return (
     <SectionWrapper>
-      <div className="flex flex-col w-full max-w-5xl gap-16">
+      <div className="flex flex-col w-full max-w-5xl gap-8 md:gap-16">
         {sections.map(({ title, icon, text }, index) => (
           <motion.div
             key={index}
@@ -76,11 +76,11 @@ export const MainSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
             className={cn(
-              'flex gap-16 px-[96px] items-center',
+              'flex gap-16 md:px-[96px] items-center',
               index % 2 === 0 && 'flex-row-reverse',
             )}
           >
-            <div className="relative h-[270px] w-[270px] flex items-center justify-center">
+            <div className="max-md:hidden relative h-[270px] w-[270px] flex items-center justify-center">
               <div className="rotate-[30deg] h-full w-full overflow-hidden drop-shadow-lg rounded-[75px]">
                 <Image
                   src="/image/gestionnaire-image.png"

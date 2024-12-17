@@ -50,7 +50,7 @@ export const Navbar = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
         className="fixed z-10 w-full bg-background-default/80 backdrop-blur-md h-16 lg:h-20 flex items-center
-          justify-between px-6"
+          justify-between px-6 transition-all duration-100 ease-linear"
       >
         <div className="flex items-center gap-12">
           <Link href="/" className="relative h-[24px] w-[104px] lg:h-[36px] lg:w-[157px] lg:-mt-1">

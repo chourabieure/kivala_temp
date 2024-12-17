@@ -37,7 +37,7 @@ export const ContactCTASection = () => {
           from-[#2f56c6] to-[#283f80] gap-10 overflow-hidden"
       >
         <span className="text-[24px] md:text-[32px] font-bold leading-tight text-center text-text-brand-on-brand">
-          Besoin de quelque chose en plus ?<br />
+          Besoin d'information complémentaire ?<br />
           Une question sur l’entreprise ?
         </span>
         <div className="flex md:max-w-3xl w-full gap-y-6 gap-x-12 items-center flex-wrap justify-center">

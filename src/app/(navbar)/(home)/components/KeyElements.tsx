@@ -3,6 +3,7 @@ import { Icon } from '@/components/Icon'
 import { SectionTitle } from '@/components/SectionWrapper/components/SectionTitle'
 import { SectionWrapper } from '@/components/SectionWrapper/SectionWrapper'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
@@ -54,7 +55,11 @@ const cards = [
   },
 ]
 
-export const KeyElements = () => {
+interface Props {
+  variant?: 'light' | 'dark'
+}
+
+export const KeyElements = ({ variant = 'dark' }: Props) => {
   const ref = useRef(null)
 
   const { scrollYProgress } = useScroll({
@@ -69,7 +74,7 @@ export const KeyElements = () => {
   })
 
   return (
-    <SectionWrapper ref={ref} className={'bg-background-kivala-tertiary'}>
+    <SectionWrapper ref={ref} className={cn(variant === 'dark' && 'bg-background-kivala-tertiary')}>
       <SectionTitle title="Adaptée à tous vos besoins" subtitle="Notre solution sur-mesure" />
       <motion.div
         initial={{ y: -50, opacity: 0 }}
@@ -92,7 +97,10 @@ export const KeyElements = () => {
         <div className="flex max-md:flex-col gap-6 max-w-5xl">
           {cards.map(({ title, text, img }, index) => (
             <div
-              className="flex flex-1 flex-col relative rounded-xl overflow-hidden bg-background-default"
+              className={cn(
+                'flex flex-1 flex-col relative rounded-xl overflow-hidden ',
+                variant === 'dark' ? 'bg-background-default' : 'bg-background-kivala-tertiary',
+              )}
               key={index}
             >
               <div className="relative h-[250px] w-full">
@@ -120,7 +128,9 @@ export const KeyElements = () => {
             variant={'secondary'}
             size={'lg'}
             animation={'translate'}
-            className="bg-background-default hover:bg-background-default/80"
+            className={cn(
+              variant === 'dark' && 'bg-background-default hover:bg-background-default/80',
+            )}
           >
             Contactez-nous
             <Icon name="MessagesSquare" />
@@ -133,7 +143,10 @@ export const KeyElements = () => {
         whileInView={{ y: 0, rotate: '40deg', opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-        className="bg-background-default/40 h-[500px] w-[500px] rounded-[140px] absolute"
+        className={cn(
+          'h-[500px] w-[500px] rounded-[140px] absolute',
+          variant === 'dark' ? 'bg-background-default/40' : 'bg-[#F7F9FF]',
+        )}
       />
       <motion.div
         style={{ y: useTransform(value, [0, 1], [-100, 200]) }}
@@ -141,7 +154,10 @@ export const KeyElements = () => {
         whileInView={{ rotate: '-30deg', opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-        className="bg-background-default/40 h-[400px] w-[400px] rounded-[140px] absolute"
+        className={cn(
+          'h-[400px] w-[400px] rounded-[140px] absolute',
+          variant === 'dark' ? 'bg-background-default/40' : 'bg-[#F7F9FF]',
+        )}
       />
     </SectionWrapper>
   )

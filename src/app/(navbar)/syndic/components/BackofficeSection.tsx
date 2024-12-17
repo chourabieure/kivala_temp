@@ -1,12 +1,12 @@
 'use client'
 import { Icon } from '@/components/Icon'
-import { IconType } from '@/components/Icon/Icon.props'
 import { SectionTitle } from '@/components/SectionWrapper/components/SectionTitle'
 import { SectionWrapper } from '@/components/SectionWrapper/SectionWrapper'
 import { Button } from '@/components/ui/button'
 import { ValuesList, ValuesListType } from '@/components/ValuesList/ValuesList'
-import { cn } from '@/lib/utils'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
+import Image from 'next/image'
+import { useRef } from 'react'
 
 const values: ValuesListType[] = [
   {
@@ -20,9 +20,28 @@ const values: ValuesListType[] = [
 ]
 
 export const BackofficeSection = () => {
+  const ref = useRef(null)
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['end end', 'start start'],
+  })
+
+  const value = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  })
+
   return (
-    <SectionWrapper className={'bg-background-kivala-tertiary'}>
-      <div className="flex w-full flex-col gap-8">
+    <SectionWrapper ref={ref} className={'bg-background-kivala-tertiary !pb-0'}>
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
+        className="flex w-full flex-col gap-8 z-[3]"
+      >
         <SectionTitle
           title="Dashboard Gestionnaire"
           subtitle="Découvrez notre support administrateur"
@@ -48,7 +67,21 @@ export const BackofficeSection = () => {
             <Icon name="MessagesSquare" />
           </Button>
         </motion.div>
-      </div>
+      </motion.div>
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
+        className="relative w-full max-w-5xl h-[300px] md:h-[500px] z-[2]"
+      >
+        <Image
+          src={'/image/backoffice-screen.png'}
+          alt="backoffice-section"
+          fill
+          className="drop-shadow-xl rounded-t-2xl object-cover object-left-top z-[2]"
+        />
+      </motion.div>
     </SectionWrapper>
   )
 }
