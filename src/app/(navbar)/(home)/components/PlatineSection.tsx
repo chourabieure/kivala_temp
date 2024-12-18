@@ -16,6 +16,7 @@ const normes = [
     Indice d’étanchéité : IP68 <br />
     Température : -25°C à +60°C
   </>,
+  'Écran tactile, utilisable avec des gants',
   'Résolution vidéo 4K',
   'Entreprise Française',
 ]

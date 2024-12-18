@@ -108,7 +108,7 @@ export const FAQSection = () => {
 
   return (
     <SectionWrapper>
-      <SectionTitle title="Quesitons fréquentes" subtitle="Besoin de plus d'informations ?" />
+      <SectionTitle title="Questions fréquentes" subtitle="Besoin de plus d'informations ?" />
       <motion.div
         initial={{ y: -50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}

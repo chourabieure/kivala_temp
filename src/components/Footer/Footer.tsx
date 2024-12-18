@@ -77,9 +77,14 @@ export const Footer = () => {
               </span>
             </span>
             <span className="flex flex-col gap-3">
-              <span className="text-base font-bold">Presse / Médias</span>
-              <span className="grid grid-cols-2 gap-x-6 gap-y-3">
-                {Object.keys(MEDIA_LINKS).map((key, index) => (
+              <span className="text-base font-bold">PRESSE ET MÉDIAS</span>
+              <a href={'/presse'} className="group flex items-center gap-4">
+                <span className="text-base text-[#7B86A9] font-normal group-hover:underline">
+                  Consulter tout les articles
+                </span>
+              </a>
+
+              {/* {Object.keys(MEDIA_LINKS).map((key, index) => (
                   <a
                     key={index}
                     href={MEDIA_LINKS[key as keyof typeof MEDIA_LINKS]}
@@ -89,8 +94,7 @@ export const Footer = () => {
                       {key}
                     </span>
                   </a>
-                ))}
-              </span>
+                ))} */}
             </span>
           </div>
           <span className="flex flex-col gap-3 min-w-[250px]">

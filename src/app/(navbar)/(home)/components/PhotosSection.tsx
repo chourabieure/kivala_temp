@@ -7,12 +7,19 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 export const PhotosSection = () => {
-  const PictureContainer = () => {
+  const PictureContainer = ({ index }: { index: number }) => {
     return (
       <figure
-        className={cn('relative rounded-lg bg-background-kivala-tertiary h-[350px] w-[270px]')}
+        className={cn(
+          'relative rounded-lg bg-background-kivala-tertiary h-[350px] w-[270px] overflow-hidden',
+        )}
       >
-        <Image src={'/temp'} alt={'Picture'} fill />
+        <Image
+          src={`/image/gallery/PhotoGallery_${index}.webp`}
+          alt={'Picture'}
+          fill
+          className="object-cover"
+        />
       </figure>
     )
   }
@@ -28,13 +35,13 @@ export const PhotosSection = () => {
         className="flex flex-col gap-6"
       >
         <Marquee className="[--duration:120s]">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <PictureContainer key={index} />
+          {Array.from({ length: 24 }).map((_, index) => (
+            <PictureContainer key={index} index={index} />
           ))}
         </Marquee>
         <Marquee reverse className="[--duration:120s]">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <PictureContainer key={index} />
+          {Array.from({ length: 24 }).map((_, index) => (
+            <PictureContainer key={index} index={24 + index} />
           ))}
         </Marquee>
       </motion.div>

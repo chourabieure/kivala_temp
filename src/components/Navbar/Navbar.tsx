@@ -81,7 +81,7 @@ export const Navbar = () => {
             <Icon name="LogIn" containerClassName={'transition-all duration-300 ease-in-out'} />
           </Button>
           <Button className={'group gap-0 max-lg:hidden'} size={'sm'} variant={'gradient'}>
-            Effectuer un Devis
+            Obtenir un devis
             <Icon
               name="ScrollText"
               containerClassName={
@@ -127,7 +127,7 @@ export const Navbar = () => {
                   />
                 </Button>
                 <Button size={'lg'} variant={'primary'}>
-                  Devis en ligne
+                  Obtenir un devis
                 </Button>
               </div>
             </SheetContent>

@@ -52,9 +52,9 @@ export default function Home() {
       </motion.div>
       <KeyElements />
       <RedirectionCardSection />
-      <VideoSection />
       <PlatineSection />
       <AppSection />
+      <VideoSection />
       <Testimonial />
       <FAQSection />
       <PhotosSection />

@@ -23,7 +23,7 @@ const values: ValuesListType[] = [
 
 export const VideoSection = () => {
   return (
-    <SectionWrapper className={'bg-background-kivala-tertiary'}>
+    <SectionWrapper>
       <SectionTitle title="Notre concept en vidéo" subtitle="Besoin d'en savoir plus ?" />
 
       <motion.div
@@ -62,12 +62,7 @@ export const VideoSection = () => {
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
         className="flex w-full justify-center max-md:flex-col gap-4"
       >
-        <Button
-          variant={'secondary'}
-          size={'lg'}
-          animation={'translate'}
-          className="bg-background-default hover:bg-background-default/80"
-        >
+        <Button variant={'secondary'} size={'lg'} animation={'translate'}>
           Contactez-nous
           <Icon name="MessagesSquare" />
         </Button>

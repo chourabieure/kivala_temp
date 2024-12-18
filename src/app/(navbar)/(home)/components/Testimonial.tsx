@@ -107,21 +107,25 @@ export const Testimonial = () => {
   const TestimonialCard = ({ review }: { review: TestimonialType }) => {
     const { name, designation, quote, stars, src } = review
     return (
-      <div className="flex flex-col items-center bg-background-default rounded-xl p-8 gap-6 w-[300px]">
-        <div className="relative h-[100px] w-[100px] rounded-full">
-          <Image
-            src={src ?? ''}
-            alt="review-profil-picture"
-            fill
-            className="rounded-full object-cover select-none"
-          />
-        </div>
-        <span className="flex flex-col gap-3 select-none">
-          <span className="text-[24px] font-bold leading-none text-center">{name}</span>
-          <span className="text-[20px] font-bold leading-none text-center text-background-kivala-primary">
-            {designation}
+      <div className="flex flex-col items-center bg-background-default rounded-xl p-6 gap-4 w-[300px]">
+        <div className="flex w-full items-center gap-3">
+          <div className="relative h-[50px] w-[50px] rounded-full">
+            <Image
+              src={src ?? ''}
+              alt="review-profil-picture"
+              fill
+              className="rounded-full object-cover select-none"
+            />
+          </div>
+          <span className="flex flex-col items-start gap-1 select-none">
+            <span className="text-[20px] font-bold leading-none text-center">{name}</span>
+            <span className="text-[18px] font-bold leading-none text-center text-background-kivala-primary">
+              {designation}
+            </span>
           </span>
-        </span>
+        </div>
+
+        <span className="text-lg select-none">{quote}</span>
         <div className="flex items-center gap-1 text-yellow-300">
           {Array.from({ length: stars ?? 0 }).map((_, index) => (
             <SvgStar key={index} />
@@ -131,7 +135,6 @@ export const Testimonial = () => {
             <SvgStarHalf key={index} />
           ))}
         </div>
-        <span className="text-lg select-none">{quote}</span>
       </div>
     )
   }

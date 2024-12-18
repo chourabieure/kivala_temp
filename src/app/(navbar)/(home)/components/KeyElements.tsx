@@ -91,7 +91,7 @@ export const KeyElements = ({ variant = 'dark' }: Props) => {
             {' '}
             générez des codes personnalisés{' '}
           </span>
-          instantanément et validez l’ouverture de la porte d’entrée,
+          instantanément <br /> et validez l’ouverture de la porte d’entrée,
           <span className="text-background-kivala-primary font-bold"> même à distance.</span>
         </span>
         <div className="flex max-md:flex-col items-center gap-12 max-w-5xl">

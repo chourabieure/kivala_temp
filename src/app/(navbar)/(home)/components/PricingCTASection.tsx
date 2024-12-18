@@ -105,10 +105,9 @@ export const PricingCTASection = ({ variant = 'default' }: Props) => {
                 Votre devis en 2 clics
               </span>
               <span className="text-xl">
-                Définissez vos besoin et
+                Définissez vos besoins et recevez votre devis{' '}
                 <span className="text-background-kivala-primary italic font-bold">
-                  {' '}
-                  recevez votre devis{' '}
+                  immédiatement
                 </span>
                 .
               </span>
