@@ -1,7 +1,6 @@
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { ReactNode } from 'react'
 import { Toaster } from '@/components/ui/sonner'
-import { TrpcContextProvider } from '@/utils/trpcContext'
 
 interface Props {
   children: ReactNode
@@ -10,9 +9,7 @@ interface Props {
 export const GlobalProvider = ({ children }: Props) => {
   return (
     <>
-      <TrpcContextProvider>
-        <TooltipProvider>{children}</TooltipProvider>
-      </TrpcContextProvider>
+      <TooltipProvider>{children}</TooltipProvider>
       <Toaster
         toastOptions={{
           classNames: {
