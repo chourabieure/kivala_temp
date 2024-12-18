@@ -12,22 +12,24 @@ import { Textarea } from '../ui/textarea'
 
 interface Props extends React.ComponentProps<typeof Input> {
   label?: string
+  labelRight?: ReactNode
   placeholder?: string
-  required?: boolean
   className?: ComponentProps<any>['className']
   tooltip?: ReactNode
   format?: CustomInputFormatType
   selectOptions?: SelectOptionsType
+  onCustomChange?: (value: string) => void
 }
 
 export const CustomInput = ({
   label = 'Label',
-  required,
+  labelRight,
   placeholder = 'e.g. Placeholder',
   className,
   tooltip,
   format = CustomInputFormat.Text,
   selectOptions,
+  onCustomChange,
   ...props
 }: Props) => {
   const shouldDisplayLabel = label && format !== CustomInputFormat.Search
@@ -60,20 +62,24 @@ export const CustomInput = ({
       </div>
     ),
     [CustomInputFormat.TextArea]: (
-      <Textarea className={cn(isError && 'border border-destructive')} placeholder={placeholder} />
+      <Textarea
+        className={cn(isError && 'border border-destructive')}
+        placeholder={placeholder}
+        onCustomChange={onCustomChange}
+        maxLength={props?.maxLength}
+      />
     ),
   }
   if (!format) return null
   return (
     <div className={cn('flex flex-col gap-[11px]', className)}>
       {shouldDisplayLabel && (
-        <span
-          className={
-            'font-medium flex pl-[6px] gap-[6px] items-center text-text-default-secondary text-base leading-none'
-          }
-        >
-          {label} {required && <span className="text-border-danger-tertiary">*</span>}
-          {tooltip && <CustomToolTip tooltip={tooltip} />}
+        <span className="flex justify-between font-medium text-text-default-secondary text-base leading-none">
+          <span className={'flex pl-[6px] gap-[6px] items-center'}>
+            {label} {props.required && <span className="text-border-danger-tertiary">*</span>}
+            {tooltip && <CustomToolTip tooltip={tooltip} />}
+          </span>
+          {labelRight}
         </span>
       )}
       {formatList[format]}

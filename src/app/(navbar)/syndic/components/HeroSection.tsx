@@ -1,12 +1,9 @@
 'use client'
 import { Icon } from '@/components/Icon'
-import { IconType } from '@/components/Icon/Icon.props'
 import { SectionWrapper } from '@/components/SectionWrapper/SectionWrapper'
 import { Button } from '@/components/ui/button'
 import { ValuesList, ValuesListType } from '@/components/ValuesList/ValuesList'
-import { cn } from '@/lib/utils'
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
-import Image from 'next/image'
+import { motion, useScroll, useSpring } from 'framer-motion'
 import { useRef } from 'react'
 
 const values: ValuesListType[] = [
@@ -17,7 +14,6 @@ const values: ValuesListType[] = [
     icon: 'Computer',
   },
 ]
-
 export const HeroSection = () => {
   const ref = useRef(null)
 
@@ -32,7 +28,7 @@ export const HeroSection = () => {
     restDelta: 0.001,
   })
   return (
-    <SectionWrapper ref={ref} className={'pt-[96px] md:pt-[128px] gap-16'}>
+    <SectionWrapper ref={ref} className={'pt-[96px] md:pt-[calc(128px_+_50px)] gap-16'}>
       <motion.div
         initial={{ y: -25, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -71,11 +67,11 @@ export const HeroSection = () => {
               transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
               className="flex w-full justify-center max-md:flex-col gap-4"
             >
-              <Button variant={'primary'} size={'lg'} animation={'translate'}>
-                Demander une démonstration
-              </Button>
               <Button variant={'secondary'} size={'lg'} animation={'translate'}>
                 Consulter notre brochure
+              </Button>
+              <Button variant={'gradient'} size={'lg'} animation={'translate'}>
+                Demander une démonstration
                 <Icon name="MoveRight" />
               </Button>
             </motion.div>

@@ -17,6 +17,10 @@ const values: ValuesListType[] = [
     label: 'Un SAV réactif',
     icon: 'Headset',
   },
+  {
+    label: 'Version Mobile',
+    icon: 'Smartphone',
+  },
 ]
 
 export const BackofficeSection = () => {
@@ -54,9 +58,6 @@ export const BackofficeSection = () => {
           transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
           className="flex w-full justify-center max-md:flex-col gap-4"
         >
-          <Button variant={'gradient'} size={'lg'} animation={'translate'}>
-            Demander une démonstration
-          </Button>
           <Button
             variant={'secondary'}
             size={'lg'}
@@ -65,6 +66,10 @@ export const BackofficeSection = () => {
           >
             Contactez-nous
             <Icon name="MessagesSquare" />
+          </Button>
+          <Button variant={'gradient'} size={'lg'} animation={'translate'}>
+            Demander une démonstration
+            <Icon name="MoveRight" />
           </Button>
         </motion.div>
       </motion.div>

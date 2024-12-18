@@ -80,7 +80,7 @@ export const Navbar = () => {
           >
             <Icon name="LogIn" containerClassName={'transition-all duration-300 ease-in-out'} />
           </Button>
-          <Button className={'group gap-0 max-lg:hidden'} size={'sm'} variant={'primary'}>
+          <Button className={'group gap-0 max-lg:hidden'} size={'sm'} variant={'gradient'}>
             Effectuer un Devis
             <Icon
               name="ScrollText"
@@ -92,7 +92,7 @@ export const Navbar = () => {
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button className="lg:hidden" variant={'primary'} size={'icon-sm'}>
+              <Button className="lg:hidden" variant={'gradient'} size={'icon-sm'}>
                 <Icon name="Menu" containerClassName={'transition-all duration-300 ease-in-out'} />
               </Button>
             </SheetTrigger>

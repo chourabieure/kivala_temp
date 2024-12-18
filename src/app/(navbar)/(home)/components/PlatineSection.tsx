@@ -52,7 +52,7 @@ export const PlatineSection = () => {
               </span>
             ))}
           </div>
-          <Button size={'lg'} variant={'gradient'} animation={'translate'}>
+          <Button size={'lg'} variant={'gradient'} animation={'translate'} className="w-fit">
             Demander une démonstration
             <Icon name="MoveRight" />
           </Button>

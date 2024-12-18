@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export const ValueSection = () => {
   return (
-    <SectionWrapper className={'bg-background-kivala-tertiary'}>
+    <SectionWrapper className={'relative bg-background-kivala-tertiary'}>
       <motion.div
         initial={{ y: -50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}

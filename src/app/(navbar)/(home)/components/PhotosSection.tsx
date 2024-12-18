@@ -10,7 +10,7 @@ export const PhotosSection = () => {
   const PictureContainer = () => {
     return (
       <figure
-        className={cn('relative rounded-lg bg-background-kivala-tertiary h-[200px] w-[450px]')}
+        className={cn('relative rounded-lg bg-background-kivala-tertiary h-[350px] w-[270px]')}
       >
         <Image src={'/temp'} alt={'Picture'} fill />
       </figure>
@@ -33,11 +33,6 @@ export const PhotosSection = () => {
           ))}
         </Marquee>
         <Marquee reverse className="[--duration:120s]">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <PictureContainer key={index} />
-          ))}
-        </Marquee>
-        <Marquee className="[--duration:120s]">
           {Array.from({ length: 4 }).map((_, index) => (
             <PictureContainer key={index} />
           ))}

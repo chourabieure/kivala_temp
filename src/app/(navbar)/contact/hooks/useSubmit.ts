@@ -2,8 +2,9 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { IconType } from '@/components/Icon/Icon.props'
+import { toast } from 'sonner'
 
 interface ContactType {
   label: 'Syndic' | 'Résident' | 'Installateur'
@@ -42,24 +43,30 @@ const ContactFormSchema = z.object({
   lastname: z.string({
     required_error: 'Veuillez entrer votre nom',
   }),
-  firstname: z.string(),
+  firstname: z.string().optional(),
   email: z
     .string({
       required_error: 'Veuillez entrer votre email',
     })
-    .email({
+    .refine((value) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value), {
       message: 'Veuillez entrer une adresse email valide',
     }),
-  phone: z.string({
-    required_error: 'Veuillez entrer votre numéro de téléphone',
-  }),
-  message: z.string({
-    required_error: 'Veuillez entrer votre message',
-  }),
+  phone: z
+    .string({
+      required_error: 'Veuillez entrer votre numéro de téléphone',
+    })
+    .refine((value) => /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/.test(value), {
+      message: 'Veuillez entrer un numéro de téléphone valide',
+    }),
+  message: z.string().optional(),
 })
 
-export const useSubmit = () => {
-  const isLoading = false
+interface Props {
+  onSuccessfullySubmitted: () => void
+}
+
+export const useSubmit = ({ onSuccessfullySubmitted }: Props) => {
+  const [isLoading, setIsLoading] = useState(false)
 
   const form = useForm<z.infer<typeof ContactFormSchema>>({
     resolver: zodResolver(ContactFormSchema),
@@ -68,9 +75,38 @@ export const useSubmit = () => {
     },
   })
 
-  const onSubmit = useCallback((data: z.infer<typeof ContactFormSchema>) => {
-    const {} = data
-  }, [])
+  const onSubmit = useCallback(
+    async (data: z.infer<typeof ContactFormSchema>) => {
+      try {
+        setIsLoading(true)
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+
+        if (!response.ok) {
+          throw new Error('Failed to submit form')
+        }
+
+        onSuccessfullySubmitted()
+        toast.success('Votre message a bien été prit en compte.', {
+          description: 'Merci de votre retour.',
+        })
+        form.reset()
+      } catch (error) {
+        toast.error("Une erreur est survenue lors de l'envoi du formulaire", {
+          description: "Si l'erreur persiste, veuillez contacter notre service client.",
+        })
+        console.error('Error submitting form:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    },
+    [form],
+  )
 
   return { isLoading, onSubmit, form }
 }

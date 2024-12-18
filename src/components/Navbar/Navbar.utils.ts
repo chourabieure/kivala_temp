@@ -1,7 +1,7 @@
 export const NAVBAR_LINKS = [
   {
     href: '/',
-    label: 'Accueil',
+    label: 'Comment ça marche ?',
   },
   {
     href: '/particulier',

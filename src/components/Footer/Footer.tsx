@@ -115,7 +115,7 @@ export const Footer = () => {
                     containerClassName={'text-background-kivala-primary'}
                   />
                   <span className="text-base leading-nonefont-normal text-[#7B86A9] group-hover:underline">
-                    +33 1 80 87 01 77
+                    01 80 87 01 77
                   </span>
                 </span>
               </span>

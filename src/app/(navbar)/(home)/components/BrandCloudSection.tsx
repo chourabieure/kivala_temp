@@ -71,19 +71,22 @@ export const BrandCloudSection = () => {
       <Link href={brand.url} target="_blank" rel="noreferrer">
         <figure
           className={cn(
-            `relative flex flex-col items-center justify-center gap-4 p-4 rounded-lg hover:scale-105
-            transition-transform h-[60px] w-[200px] duration-300 ease-in-out mx-6`,
+            `relative flex flex-col items-center justify-center gap-4 rounded-lg hover:scale-105
+            transition-transform h-[40px] w-[150px] duration-300 ease-in-out mx-6`,
             `bg-${brand.color}`,
           )}
         >
-          <Image src={brand.logo} alt={brand.name} fill />
+          <Image src={brand.logo} alt={brand.name} fill className="px-2" />
         </figure>
       </Link>
     )
   }
   return (
     <SectionWrapper className={'px-0 !pb-0 '}>
-      <SectionTitle title="Ils parlent de nous" subtitle="Un grand merci à eux" />
+      <SectionTitle
+        title="Ils parlent de nous"
+        className={'italic text-background-kivala-primary'}
+      />
 
       <motion.div
         initial={{ y: -25, opacity: 0 }}
@@ -91,7 +94,7 @@ export const BrandCloudSection = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
       >
-        <Marquee className="[--duration:40s]">
+        <Marquee className="[--duration:40s] [--gap:0.5rem] md:[--gap:1rem]">
           {brands.map((brand) => (
             <BrandCard key={brand.name} brand={brand} />
           ))}

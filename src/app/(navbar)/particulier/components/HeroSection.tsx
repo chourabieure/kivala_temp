@@ -113,11 +113,11 @@ export const HeroSection = () => {
               transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
               className="flex w-full justify-center max-md:flex-col gap-4"
             >
-              <Button variant={'gradient'} size={'lg'} animation={'translate'}>
+              <Button variant={'secondary'} size={'lg'} animation={'translate'}>
                 Contacter mon Syndic
                 <Icon name="Building" />
               </Button>
-              <Button variant={'primary'} size={'lg'} animation={'translate'}>
+              <Button variant={'gradient'} size={'lg'} animation={'translate'}>
                 Effectuer un Devis
               </Button>
             </motion.div>

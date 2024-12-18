@@ -2,6 +2,7 @@
 import { Icon } from '@/components/Icon'
 import { IconType } from '@/components/Icon/Icon.props'
 import { SectionWrapper } from '@/components/SectionWrapper/SectionWrapper'
+import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
@@ -33,8 +34,8 @@ export const ContactCTASection = () => {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-        className="relative w-full p-8 md:p-16 rounded-xl max-w-5xl flex flex-col items-center bg-gradient-to-tr
-          from-[#2f56c6] to-[#283f80] gap-10 overflow-hidden"
+        className="relative w-full p-8 md:pb-12 md:p-16 rounded-xl max-w-5xl flex flex-col items-center
+          bg-gradient-to-tr from-[#2f56c6] to-[#283f80] gap-10 overflow-hidden"
       >
         <span className="text-[24px] md:text-[32px] font-bold leading-tight text-center text-text-brand-on-brand">
           Besoin d'information complémentaire ?<br />
@@ -58,9 +59,13 @@ export const ContactCTASection = () => {
             </span>
           ))}
         </div>
+        <Button variant={'secondary'} size={'lg'} animation={'translate'}>
+          Contactez-nous
+          <Icon name="MessagesSquare" />
+        </Button>
         <motion.div
           style={{ left: -100, top: 0, rotate: '30deg', opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+          whileInView={{ y: 0, opacity: 0.5 }}
           viewport={{ once: true }}
           className="absolute max-md:hidden"
         >
@@ -68,7 +73,7 @@ export const ContactCTASection = () => {
         </motion.div>
         <motion.div
           style={{ right: -100, bottom: -200, rotate: '-30deg', opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+          whileInView={{ y: 0, opacity: 0.5 }}
           viewport={{ once: true }}
           className="absolute max-md:hidden"
         >

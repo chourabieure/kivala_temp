@@ -42,7 +42,7 @@ export default function Home() {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
-        className="flex justify-center py-16"
+        className="flex justify-center pt-16 pb-8"
       >
         <Icon
           name="ArrowDown"

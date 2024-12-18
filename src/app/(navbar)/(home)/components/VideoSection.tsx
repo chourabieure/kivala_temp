@@ -62,16 +62,16 @@ export const VideoSection = () => {
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
         className="flex w-full justify-center max-md:flex-col gap-4"
       >
-        <Button variant={'gradient'} size={'lg'} animation={'translate'}>
-          Contactez-nous
-          <Icon name="MessagesSquare" />
-        </Button>
         <Button
           variant={'secondary'}
           size={'lg'}
           animation={'translate'}
           className="bg-background-default hover:bg-background-default/80"
         >
+          Contactez-nous
+          <Icon name="MessagesSquare" />
+        </Button>
+        <Button variant={'gradient'} size={'lg'} animation={'translate'}>
           Consulter la brochure
           <Icon name="MoveRight" />
         </Button>

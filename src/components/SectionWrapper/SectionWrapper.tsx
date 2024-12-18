@@ -14,7 +14,7 @@ export const SectionWrapper = forwardRef<HTMLDivElement, Props>(
         id={id}
         ref={ref}
         className={cn(
-          `relative flex flex-col items-center justify-center gap-12 md:gap-16 w-full py-12 md:py-24 px-6
+          `relative flex flex-col items-center justify-center gap-12 md:gap-16 w-full py-12 md:py-16 px-6
           overflow-hidden`,
           className,
         )}

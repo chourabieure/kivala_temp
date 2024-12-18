@@ -2,15 +2,19 @@ import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
-const Textarea = React.forwardRef<HTMLTextAreaElement, React.ComponentProps<'textarea'>>(
-  ({ className, ...props }, ref) => {
+interface Props extends React.ComponentProps<'textarea'> {
+  onCustomChange?: (value: string) => void
+}
+
+const Textarea = React.forwardRef<HTMLTextAreaElement, Props>(
+  ({ className, onCustomChange, ...props }, ref) => {
     return (
       <textarea
         className={cn(
           `flex min-h-[250px] p-4 w-full rounded-md bg-background-default-secondary disabled:cursor-not-allowed
           disabled:opacity-50`,
           // TEXT
-          'text-base text-text-default font-medium leading-normal transition-colors',
+          'text-base text-text-default font-medium leading-relaxed transition-colors',
           // FOCUS
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background-kivala-secondary',
           //PLACEHOLDER
@@ -18,6 +22,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, React.ComponentProps<'tex
           className,
         )}
         ref={ref}
+        onChange={(e) => onCustomChange?.(e?.target?.value)}
         {...props}
       />
     )

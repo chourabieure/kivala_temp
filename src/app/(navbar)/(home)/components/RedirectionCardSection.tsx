@@ -61,7 +61,7 @@ export const RedirectionCardSection = () => {
                 `relative flex-1 flex flex-col pb-8 md:pb-[130px] pt-8 md:pt-12 max-md:gap-8 px-8 rounded-xl
                 md:h-[410px] justify-between`,
                 index === 1
-                  ? 'text-text-brand-on-brand bg-background-kivala'
+                  ? 'text-text-brand-on-brand bg-gradient-to-tr from-[#2f56c6] to-[#283f80]'
                   : 'bg-background-kivala-tertiary',
               )}
             >
@@ -77,7 +77,7 @@ export const RedirectionCardSection = () => {
                 size={'lg'}
                 className={cn(
                   index === 1
-                    ? 'hover:bg-background-kivala-primary/20 text-background-kivala-primary'
+                    ? 'hover:bg-background-kivala-primary/20 text-text-brand-on-brand'
                     : 'hover:bg-background-kivala/10 text-background-kivala-primary',
                 )}
               >

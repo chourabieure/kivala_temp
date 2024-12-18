@@ -38,10 +38,6 @@ export const EquippedCTASection = () => {
         </span>
       </motion.div>
       <div className="flex max-md:flex-col gap-3 md:gap-6 max-md:w-full">
-        <Button variant={'gradient'} size={'lg'} animation={'translate'}>
-          Demander l'installation
-          <Icon name="ArrowDownToDot" />
-        </Button>
         <Button
           variant={'secondary'}
           size={'lg'}
@@ -49,6 +45,9 @@ export const EquippedCTASection = () => {
           className="bg-background-default hover:bg-background-default/80"
         >
           Consulter la brochure
+        </Button>
+        <Button variant={'gradient'} size={'lg'} animation={'translate'}>
+          Demander l'installation
           <Icon name="MoveRight" />
         </Button>
       </div>

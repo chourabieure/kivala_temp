@@ -27,20 +27,6 @@ const cards = [
   {
     title: (
       <>
-        Fonctionnalité<span className="text-background-kivala-primary"> interphone</span>
-      </>
-    ),
-    text: (
-      <>
-        Identifiez en<span className="font-bold"> temps réel </span>votre visiteur depuis votre
-        smartphone. Autorisez son entrée et/ou donnez vos instructions de livraison.
-      </>
-    ),
-    img: '/image/KeyElements/interphone.png',
-  },
-  {
-    title: (
-      <>
         Code à <span className="text-background-kivala-primary"> usage unique </span>des entrées et
         personnalisable
       </>
@@ -52,6 +38,20 @@ const cards = [
       </>
     ),
     img: '/image/KeyElements/codes.png',
+  },
+  {
+    title: (
+      <>
+        Fonctionnalité<span className="text-background-kivala-primary"> interphone</span>
+      </>
+    ),
+    text: (
+      <>
+        Identifiez en<span className="font-bold"> temps réel </span>votre visiteur depuis votre
+        smartphone. Autorisez son entrée et/ou donnez vos instructions de livraison.
+      </>
+    ),
+    img: '/image/KeyElements/interphone.png',
   },
 ]
 
@@ -94,16 +94,17 @@ export const KeyElements = ({ variant = 'dark' }: Props) => {
           instantanément et validez l’ouverture de la porte d’entrée,
           <span className="text-background-kivala-primary font-bold"> même à distance.</span>
         </span>
-        <div className="flex max-md:flex-col gap-6 max-w-5xl">
+        <div className="flex max-md:flex-col items-center gap-12 max-w-5xl">
           {cards.map(({ title, text, img }, index) => (
             <div
               className={cn(
-                'flex flex-1 flex-col relative rounded-xl overflow-hidden ',
+                'flex flex-1 flex-col relative rounded-xl overflow-hidden',
                 variant === 'dark' ? 'bg-background-default' : 'bg-background-kivala-tertiary',
+                index === 1 ? 'h-[500px]' : 'h-[450px]',
               )}
               key={index}
             >
-              <div className="relative h-[250px] w-full">
+              <div className="relative min-h-[250px] flex-1 w-full">
                 <Image src={img} alt={'image_' + title} fill className="object-cover" />
               </div>
               <div className="flex flex-col gap-3 p-6">
@@ -120,10 +121,6 @@ export const KeyElements = ({ variant = 'dark' }: Props) => {
           transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
           className="flex w-full justify-center max-md:flex-col gap-4"
         >
-          <Button variant={'gradient'} size={'lg'} animation={'translate'}>
-            Générer un devis
-            <Icon name="FileDown" />
-          </Button>
           <Button
             variant={'secondary'}
             size={'lg'}
@@ -134,6 +131,10 @@ export const KeyElements = ({ variant = 'dark' }: Props) => {
           >
             Contactez-nous
             <Icon name="MessagesSquare" />
+          </Button>
+          <Button variant={'gradient'} size={'lg'} animation={'translate'}>
+            Mon devis en ligne
+            <Icon name="MoveRight" />
           </Button>
         </motion.div>
       </motion.div>
