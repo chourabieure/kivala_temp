@@ -25,9 +25,13 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false)
 
   const { scrollY } = useScroll()
-  const [showBanner, setShowBanner] = useState(true)
+  const [showBanner, setShowBanner] = useState(false)
 
   useEffect(() => {
+    if (pathname !== '/') {
+      setShowBanner(false)
+      return
+    }
     const handleScroll = () => {
       const viewportHeight = window.innerHeight
       if (scrollY.get() <= viewportHeight - 300) {
@@ -37,8 +41,9 @@ export const Navbar = () => {
       }
     }
     const unsubscribe = scrollY.on('change', handleScroll)
+    handleScroll()
     return () => unsubscribe()
-  }, [scrollY])
+  }, [scrollY, pathname])
 
   return (
     <div>
@@ -80,15 +85,17 @@ export const Navbar = () => {
           >
             <Icon name="LogIn" containerClassName={'transition-all duration-300 ease-in-out'} />
           </Button>
-          <Button className={'group gap-0 max-lg:hidden'} size={'sm'} variant={'gradient'}>
-            Obtenir un devis
-            <Icon
-              name="ScrollText"
-              containerClassName={
-                'invisible group-hover:visible opacity-0 group-hover:opacity-100 w-0 group-hover:w-4 ml-0 group-hover:ml-3 transition-all duration-300 ease-in-out'
-              }
-            />
-          </Button>
+          <Link href={'/sales'}>
+            <Button className={'group gap-0 max-lg:hidden'} size={'sm'} variant={'gradient'}>
+              Obtenir un devis
+              <Icon
+                name="ScrollText"
+                containerClassName={
+                  'invisible group-hover:visible opacity-0 group-hover:opacity-100 w-0 group-hover:w-4 ml-0 group-hover:ml-3 transition-all duration-300 ease-in-out'
+                }
+              />
+            </Button>
+          </Link>
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -126,9 +133,11 @@ export const Navbar = () => {
                     }
                   />
                 </Button>
-                <Button size={'lg'} variant={'primary'}>
-                  Obtenir un devis
-                </Button>
+                <Link href={'/sales'}>
+                  <Button size={'lg'} variant={'primary'} className="w-full">
+                    Obtenir un devis
+                  </Button>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

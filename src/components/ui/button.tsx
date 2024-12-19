@@ -24,7 +24,8 @@ const buttonVariants = cva(
         sm: 'h-[44px] rounded-lg px-4 md:px-6 text-[15px] font-bold',
         lg: 'h-[48px] rounded-lg px-4 md:px-6 gap-4 text-lg md:text-lg font-bold [&_svg]:size-4 md:[&_svg]:size-5',
         icon: 'h-9 w-9',
-        'icon-sm': 'h-[44px] w-[44px] rounded-lg p-0',
+        'icon-sm': 'h-[42px] w-[42px] rounded-lg p-0',
+        'icon-lg': 'h-[48px] w-[48px] rounded-lg p-0 md:[&_svg]:size-6',
       },
       animation: {
         none: 'transition-none',

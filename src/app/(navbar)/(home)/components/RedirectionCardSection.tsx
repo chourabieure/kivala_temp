@@ -15,13 +15,13 @@ const cards = [
     title: 'Particulier',
     text: "Vous êtes résidents et vous souhaiter plus d'informations sur la platine KIvala ?",
     image: '/image/resident-image.png',
-    href: '#',
+    href: '/particulier',
   },
   {
     title: 'Professionnels',
     text: "Vous êtes syndic, gestionnaire ou professionnels de l'immobilier. Kivala vous permet d'apporter de l'innovation et de la sécurité pour vos immeubles",
     image: '/image/gestionnaire-image.png',
-    href: '#',
+    href: '/syndic',
   },
 ]
 

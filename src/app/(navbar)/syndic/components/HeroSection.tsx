@@ -28,7 +28,7 @@ export const HeroSection = () => {
     restDelta: 0.001,
   })
   return (
-    <SectionWrapper ref={ref} className={'pt-[96px] md:pt-[calc(128px_+_50px)] gap-16'}>
+    <SectionWrapper ref={ref} className={'pt-[96px] md:pt-[128px] gap-16'}>
       <motion.div
         initial={{ y: -25, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}

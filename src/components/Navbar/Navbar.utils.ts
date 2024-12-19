@@ -12,6 +12,10 @@ export const NAVBAR_LINKS = [
     label: 'Professionnel',
   },
   {
+    href: '#',
+    label: 'Installateur',
+  },
+  {
     href: '/contact',
     label: 'Contact',
   },

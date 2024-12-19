@@ -38,7 +38,7 @@ export const ContactForm = () => {
   })
 
   return (
-    <SectionWrapper ref={ref} className="pt-[96px] md:pt-[calc(128px_+_50px)] !pb-0 relative">
+    <SectionWrapper ref={ref} className="pt-[96px] md:pt-[128px] !pb-0 relative">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}

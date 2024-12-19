@@ -7,6 +7,7 @@ import { ValuesList, ValuesListType } from '@/components/ValuesList/ValuesList'
 import { cn } from '@/lib/utils'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRef } from 'react'
 
 const values: ValuesListType[] = [
@@ -31,7 +32,7 @@ export const HeroSection = () => {
     restDelta: 0.001,
   })
   return (
-    <SectionWrapper ref={ref} className={'pt-[96px] md:pt-[calc(128px_+_50px)] gap-16'}>
+    <SectionWrapper ref={ref} className={'pt-[96px] md:pt-[128px] gap-16'}>
       <motion.div
         initial={{ y: -25, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -105,7 +106,7 @@ export const HeroSection = () => {
             </h2>
           </div>
 
-          <div className="flex flex-col gap-12 md:gap-6 w-full">
+          <div className="flex flex-col gap-12 md:gap-6 pt-3 w-full">
             <motion.div
               initial={{ y: -50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -113,13 +114,29 @@ export const HeroSection = () => {
               transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
               className="flex w-full justify-center max-md:flex-col gap-4"
             >
-              <Button variant={'secondary'} size={'lg'} animation={'translate'}>
-                Contacter mon Syndic
-                <Icon name="Building" />
-              </Button>
-              <Button variant={'gradient'} size={'lg'} animation={'translate'}>
-                Effectuer un Devis
-              </Button>
+              <Link href="/contact">
+                <Button
+                  variant={'secondary'}
+                  size={'lg'}
+                  animation={'translate'}
+                  className="relative"
+                >
+                  <span
+                    className="absolute -top-[30px] italic flex items-center gap-1 text-transparent bg-clip-text bg-gradient-to-r
+                      from-background-kivala to-background-kivala-primary"
+                  >
+                    Kivala s'en charge{' '}
+                    <Icon name="ArrowDown" containerClassName={'text-background-kivala-primary'} />
+                  </span>
+                  Contacter mon Syndic
+                  <Icon name="Building" />
+                </Button>
+              </Link>
+              <Link href="/sales">
+                <Button variant={'gradient'} size={'lg'} animation={'translate'}>
+                  Effectuer un Devis
+                </Button>
+              </Link>
             </motion.div>
             <ValuesList values={values} />
           </div>

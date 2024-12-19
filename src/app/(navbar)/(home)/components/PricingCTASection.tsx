@@ -5,6 +5,7 @@ import { SectionWrapper } from '@/components/SectionWrapper/SectionWrapper'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const values = [
   'Installation de notre matériel',
@@ -81,15 +82,17 @@ export const PricingCTASection = ({ variant = 'default' }: Props) => {
             ))}
           </div>
           {variant === 'CTA' && (
-            <Button
-              variant={'secondary'}
-              size={'lg'}
-              className="md:w-fit bg-background-default hover:bg-background-default/80"
-              animation={'translate'}
-            >
-              Contactez-nous
-              <Icon name="MessagesSquare" />
-            </Button>
+            <Link href="/contact">
+              <Button
+                variant={'secondary'}
+                size={'lg'}
+                className="md:w-fit bg-background-default hover:bg-background-default/80"
+                animation={'translate'}
+              >
+                Contactez-nous
+                <Icon name="MessagesSquare" />
+              </Button>
+            </Link>
           )}
         </motion.div>
         <div className="relative">
@@ -105,18 +108,20 @@ export const PricingCTASection = ({ variant = 'default' }: Props) => {
                 Votre devis en 2 clics
               </span>
               <span className="text-xl">
-                Définissez vos besoins et recevez votre devis{' '}
+                Définissez vos besoins et{' '}
                 <span className="text-background-kivala-primary italic font-bold">
-                  immédiatement
+                  recevez votre devis{' '}
                 </span>
-                .
+                immédiatement.
               </span>
             </span>
 
-            <Button variant={'gradient'} size={'lg'} animation={'translate'}>
-              Obtenir mon devis
-              <Icon name="ScrollText" />
-            </Button>
+            <Link href="/sales">
+              <Button variant={'gradient'} size={'lg'} animation={'translate'} className="w-full">
+                Obtenir mon devis
+                <Icon name="ScrollText" />
+              </Button>
+            </Link>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: '-60%', top: 0, right: -200, rotate: '30deg' }}

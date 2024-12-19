@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRef } from 'react'
 
 const cards = [
@@ -94,7 +95,7 @@ export const KeyElements = ({ variant = 'dark' }: Props) => {
           instantanément <br /> et validez l’ouverture de la porte d’entrée,
           <span className="text-background-kivala-primary font-bold"> même à distance.</span>
         </span>
-        <div className="flex max-md:flex-col items-center gap-12 max-w-5xl">
+        <div className="flex max-md:flex-col items-center gap-6 md:gap-12 max-w-5xl">
           {cards.map(({ title, text, img }, index) => (
             <div
               className={cn(
@@ -104,8 +105,14 @@ export const KeyElements = ({ variant = 'dark' }: Props) => {
               )}
               key={index}
             >
-              <div className="relative min-h-[250px] flex-1 w-full">
-                <Image src={img} alt={'image_' + title} fill className="object-cover" />
+              <div className="relative h-[250px] flex-1 w-full">
+                <Image
+                  src={img}
+                  alt={'image_' + title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 250px"
+                />
               </div>
               <div className="flex flex-col gap-3 p-6">
                 <span className="font-bold text-2xl leading-tight">{title}</span>
@@ -121,21 +128,26 @@ export const KeyElements = ({ variant = 'dark' }: Props) => {
           transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
           className="flex w-full justify-center max-md:flex-col gap-4"
         >
-          <Button
-            variant={'secondary'}
-            size={'lg'}
-            animation={'translate'}
-            className={cn(
-              variant === 'dark' && 'bg-background-default hover:bg-background-default/80',
-            )}
-          >
-            Contactez-nous
-            <Icon name="MessagesSquare" />
-          </Button>
-          <Button variant={'gradient'} size={'lg'} animation={'translate'}>
-            Mon devis en ligne
-            <Icon name="MoveRight" />
-          </Button>
+          <Link href="/contact">
+            <Button
+              variant={'secondary'}
+              size={'lg'}
+              animation={'translate'}
+              className={cn(
+                variant === 'dark' && 'bg-background-default hover:bg-background-default/80',
+              )}
+            >
+              Contactez-nous
+              <Icon name="MessagesSquare" />
+            </Button>
+          </Link>
+
+          <Link href="/sales">
+            <Button variant={'gradient'} size={'lg'} animation={'translate'}>
+              Mon devis en ligne
+              <Icon name="MoveRight" />
+            </Button>
+          </Link>
         </motion.div>
       </motion.div>
       <motion.div

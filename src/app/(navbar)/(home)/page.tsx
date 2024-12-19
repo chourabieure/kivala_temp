@@ -15,6 +15,7 @@ import { Icon } from '@/components/Icon'
 import { PhotosSection } from './components/PhotosSection'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -27,14 +28,18 @@ export default function Home() {
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
         className="flex w-full justify-center max-md:flex-col gap-4 px-6"
       >
-        <Button variant={'secondary'} size={'lg'} animation={'translate'}>
-          Être rappelé
-          <Icon name="PhoneCall" />
-        </Button>
-        <Button variant={'gradient'} size={'lg'} animation={'translate'}>
-          Installer Kivala
-          <Icon name="MoveRight" />
-        </Button>
+        <Link href="/contact">
+          <Button variant={'secondary'} size={'lg'} animation={'translate'}>
+            Être rappelé
+            <Icon name="PhoneCall" />
+          </Button>
+        </Link>
+        <Link href="/sales">
+          <Button variant={'gradient'} size={'lg'} animation={'translate'}>
+            Installer Kivala
+            <Icon name="MoveRight" />
+          </Button>
+        </Link>
       </motion.div>
       <BrandCloudSection />
       <motion.div

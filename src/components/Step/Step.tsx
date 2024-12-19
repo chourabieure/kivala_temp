@@ -1,34 +1,39 @@
+import { cn } from '@/lib/utils'
+import { Icon } from '../Icon'
 import { StepProps, StepStatus } from './Step.props'
 
 export const Step = ({ title, description, status, isLastStep }: StepProps) => {
-  const titleColor =
-    status === StepStatus.NotStarted
-      ? 'text-[#182244]/50'
-      : status === StepStatus.Current
-        ? 'text-blue-600'
-        : 'text-[#192344]'
-  const bubbleColor = status === StepStatus.NotStarted || status === StepStatus.Current ? '/20' : '/100'
-
   return (
-    <div
-      className={`flex-col justify-start items-start gap-3 inline-flex ${isLastStep ? 'w-[500px]' : 'w-full'}`}
-    >
-      <div className="self-stretch h-5 justify-start items-center gap-6 inline-flex">
-        <div
-          className={`w-5 h-5 bg-blue-600$ rounded-xl flex-col justify-center items-center inline-flex`}
-        >
-          {status === StepStatus.Current && (
-            <div className="w-3 h-3 relative border border-[#FFFFFF] rounded-xl items-center justify-center inline-flex">
-              <div className="w-[2px] h-[2px] bg-[#FFFFFF] rounded-xl" />
-            </div>
+    <div className="w-full flex flex-col gap-4">
+      <div className="flex gap-4 items-center">
+        <Icon
+          name={
+            status === StepStatus.Completed
+              ? 'Check'
+              : status === StepStatus.Current
+                ? 'CircleDot'
+                : 'Dot'
+          }
+          size={12}
+          containerClassName={cn(
+            'w-[20px] h-[20px] flex items-center justify-center rounded-full bg-background-kivala-primary/20 text-background-kivala-primary',
+            status === StepStatus.Completed &&
+              'bg-background-kivala-primary text-text-brand-on-brand',
+            status === StepStatus.NotStarted && 'text-transparent',
           )}
-        </div>
-        {!isLastStep && <div className="grow h-px bg-[#cfd6dc]" />}
+        />
+        <div className="bg-[#CFD6DC] flex-1 h-[1px]" />
       </div>
-      <div className="self-stretch h-[30px] flex-col justify-center items-start flex">
-        <p className={`text-center ${titleColor} text-base font-bold `}>{title}</p>
-        <p className="text-center text-[#7b85a8] text-sm font-medium">{description}</p>
-      </div>
+      <span
+        className={cn(
+          'flex flex-col leading-none gap-1',
+          status === StepStatus.Current && 'text-background-kivala-primary',
+          status === StepStatus.NotStarted && 'opacity-50',
+        )}
+      >
+        <span className={cn('text-lg font-bold')}>{title}</span>
+        <span className={cn('text-lg text-text-default-secondary')}>{description}</span>
+      </span>
     </div>
   )
 }

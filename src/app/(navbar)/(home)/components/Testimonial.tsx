@@ -140,7 +140,7 @@ export const Testimonial = () => {
   }
 
   return (
-    <SectionWrapper ref={ref} className={'bg-background-kivala-tertiary z-[0] !gap-12'}>
+    <SectionWrapper ref={ref} className={'bg-background-kivala-tertiary z-[0] !px-0'}>
       <div className="relative">
         <SectionTitle
           title={
@@ -182,14 +182,10 @@ export const Testimonial = () => {
             loop: true,
           }}
         >
-          <div className="relative flex justify-center gap-6">
+          {/* <div className="relative flex justify-center gap-6">
             <CarouselPrevious className="relative" />
             <CarouselNext className="relative" />
-          </div>
-          {/* <div
-            className="h-full w-[30px] absolute top-0 left-0 z-[2] bg-gradient-to-l to-background-kivala-tertiary
-              from-transparent"
-          /> */}
+          </div> */}
 
           <CarouselContent>
             {reviews.map((review, index) => (
@@ -198,10 +194,6 @@ export const Testimonial = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          {/* <div
-            className="h-full w-[30px] absolute top-0 right-0 z-[2] bg-gradient-to-l from-background-kivala-tertiary
-              to-transparent"
-          /> */}
         </Carousel>
       </div>
     </SectionWrapper>

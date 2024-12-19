@@ -8,6 +8,7 @@ import { ValuesList, ValuesListType } from '@/components/ValuesList/ValuesList'
 import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
 import { ValueSection } from '../../syndic/components/ValueSection'
+import Link from 'next/link'
 
 const values: ValuesListType[] = [
   { label: 'Sécurité optimale', icon: 'Shield' },
@@ -62,14 +63,18 @@ export const VideoSection = () => {
         transition={{ duration: 0.6, ease: 'easeInOut', type: 'spring' }}
         className="flex w-full justify-center max-md:flex-col gap-4"
       >
-        <Button variant={'secondary'} size={'lg'} animation={'translate'}>
-          Contactez-nous
-          <Icon name="MessagesSquare" />
-        </Button>
-        <Button variant={'gradient'} size={'lg'} animation={'translate'}>
-          Consulter la brochure
-          <Icon name="MoveRight" />
-        </Button>
+        <Link href="/contact">
+          <Button variant={'secondary'} size={'lg'} animation={'translate'}>
+            Contactez-nous
+            <Icon name="MessagesSquare" />
+          </Button>
+        </Link>
+        <Link href="#">
+          <Button variant={'gradient'} size={'lg'} animation={'translate'}>
+            Consulter la brochure
+            <Icon name="MoveRight" />
+          </Button>
+        </Link>
       </motion.div>
     </SectionWrapper>
   )
